@@ -39,13 +39,20 @@ void heapify(int *arr, int n, int i)
         // of the heap.
 
         swap(&arr[largestIdx], &arr[i]);
+
+        // jis node pe naya value aaya(not the root node), uss node ko root maanke wapas heapify peform karo
+        // keep on doing this,, until no more heapification is required i.e. untill root node value
+        // is greater than both its children
         heapify(arr, n, largestIdx);
     }
 }
 
 void buildHeap(int *arr, int n)
 {
+    // start from the last parental node
     int startIdx = n / 2 - 1;
+
+    // then, perform heapification for all the parental nodes
     for (int i = startIdx; i >= 0; i--)
         heapify(arr, n, i);
 }
