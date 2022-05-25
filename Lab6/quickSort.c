@@ -10,7 +10,6 @@ void swap(int *a, int *b)
 {
 
     int temp;
-
     temp = *a;
     *a = *b;
     *b = temp;
@@ -78,7 +77,7 @@ int main()
         arr[i + 1] = INT16_MAX;
 
         for (int j = 0; j < i + 1; j++)
-            arr[j] = j + 1;
+            arr[j] = 1;
 
         quickSort(arr, 0, i);
 

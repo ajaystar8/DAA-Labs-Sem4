@@ -1,7 +1,10 @@
+// heapsort is perfomed using bottom-up heap construction approach
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
+
+int opcount = 0;
 
 void swap(int *a, int *b)
 {
@@ -17,6 +20,7 @@ void heapify(int *arr, int n, int i)
     int leftChildIdx = 2 * i + 1;
     int rightChildIdx = 2 * i + 2;
 
+    opcount++;
     if (leftChildIdx < n && arr[leftChildIdx] > arr[largestIndx])
         largestIndx = leftChildIdx;
 
@@ -32,6 +36,7 @@ void heapify(int *arr, int n, int i)
 
 void buildHeap(int *arr, int n)
 {
+    // start from the last parent node going up till the first parent node
     for (int i = n / 2 - 1; i >= 0; i--)
         heapify(arr, n, i);
 }
@@ -43,6 +48,7 @@ void heapSort(int *arr, int n)
 
     // remove root node and then perform heapification
     // root node consists of the largest element of the array
+    // root node is swapped with the last leaf node
     for (int i = n - 1; i >= 0; i--)
     {
         // swap the largest and the smallest element of the array
@@ -77,5 +83,9 @@ int main()
     printf("Sorted array is \n");
 
     printHeap(arr, n);
+
+    printf("\n");
+
+    printf("Opcount: %d", opcount);
     return 0;
 }
