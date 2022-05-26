@@ -6,6 +6,7 @@
 int shiftTable[500];
 char p[100];
 char src[100];
+int kc = 0; 
 
 void shiftTableGenerate(char p[100])
 {
@@ -29,9 +30,17 @@ int horspoolMatching(char src[100], char p[100])
 
     while (i < n)
     {
+        int flag = 0; 
         int k = 0;
-        while ((k <= m - 1) && (p[m - 1 - k] == src[i - k]))
+        
+        while ((k <= m - 1) && (p[m - 1 - k] == src[i - k])){
+            flag = 1;
+            kc++;
             k++;
+        }
+
+        if(!flag)
+            kc++;
 
         if (k == m)
             return i - m + 1;
@@ -59,5 +68,7 @@ int main()
 
     else
         printf("Pattern found starting at index %d\n", index);
+
+    printf("Comparisons: %d\n", kc);
     return 0;
 }
