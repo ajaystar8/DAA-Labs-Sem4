@@ -10,6 +10,7 @@ char src[100];
 void shiftTableGenerate(char p[100])
 {
     int m = strlen(p);
+
     for (int i = 0; i < 500; i++)
         shiftTable[i] = m;
 
@@ -29,7 +30,7 @@ int horspoolMatching(char src[100], char p[100])
     while (i < n)
     {
         int k = 0;
-        while ((k < m) && (p[m - 1 - k] == src[i - k]))
+        while ((k <= m - 1) && (p[m - 1 - k] == src[i - k]))
             k++;
 
         if (k == m)
